@@ -15,19 +15,22 @@
                 &ensp; &nbsp;&ensp; &nbsp;&ensp; &nbsp;&ensp; &nbsp;&ensp; &nbsp;&ensp; &nbsp;&ensp; &nbsp;&ensp; &nbsp;
                 <ul class="navbar-nav mr-auto">
                         <li>
-                          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                                <li class="nav-item">
+                                        <a class="nav-link" >---</a>
+                                      </li>
+                          <a class="nav-link" href="/">Naslovna <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="/about">About</a>
+                          <a class="nav-link" href="/about">Izrada</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link disabled" href="/services">Services</a>
+                          <a class="nav-link disabled" href="/services">Usluge</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link disabled" href="/posts">Blog</a>
+                          <a class="nav-link disabled" href="/posts">Novosti</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="/posts/create">Create Post</a>
+                            <a class="nav-link disabled" href="/posts/create">---</a>
                         </li>
                       </ul>
 
