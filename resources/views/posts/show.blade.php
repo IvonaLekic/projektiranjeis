@@ -7,14 +7,19 @@
     {!!$post->body!!}
 </div>
 <hr>
-<small>Written on {{$post->created_at}}</small>
+<small>Datum pisanja {{$post->created_at}}</small>
 </br>
 </br>
-<a href="/posts" class="btn btn-dark">Go Back</a>
+<a href="/posts" class="btn btn-dark">Nazad</a>
 <hr>
-<a href="/posts/{{$post->id}}/edit" class="btn btn-dark">Edit</a>
+@auth
+@if( $post->user_id == $currentuserid = Auth::user()->id)
+<a href="/posts/{{$post->id}}/edit" class="btn btn-dark">Uredi</a>
+@endif
+@endauth
+
 {{Form::open(array('action' => ['PostController@destroy', $post->id])) }}
 {{Form::hidden('_method', 'DELETE')}}
-{{Form::submit('Delete', ['class' =>'btn btn-danger'])}}
+{{Form::submit('Izbriši', ['class' =>'btn btn-danger'])}}
 {!!Form::close()!!}
 @endsection

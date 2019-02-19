@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Uspješno ste se logirali</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,8 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="/posts/create" class="btn btn-dark">Create Post</a>
-                    <h3>Your Blog Posts</h3>
+                    <a href="/" class="btn btn-dark">Pogledajte naše ponude.</a>
+            
                 </div>
             </div>
         </div>

@@ -27,7 +27,9 @@ Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
 
+
 Route::resource('posts', 'PostController');
+Route::resource('users', 'UserController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -36,5 +38,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('dropzone', 'HomeController@dropzone');
-Route::post('dropzone/store', ['as'=>'dropzone.store','uses'=>'HomeController@dropzoneStore']);
+Route::get('/upload', 'UploadController@uploadForm');
+Route::post('/upload', 'UploadController@uploadSubmit');
+
+Route::get('image-gallery', 'ImageGalleryController@index');
+Route::post('image-gallery', 'ImageGalleryController@upload');
+Route::delete('image-gallery/{id}', 'ImageGalleryController@destroy');
