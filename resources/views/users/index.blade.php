@@ -6,8 +6,8 @@
   @if(count($users) > 0)
   @foreach($users as $user)
       <div class ="card card-body bg-light"
-           <h3><a href="/users/{{$user->email}}">{{$user->title}}</a></h3>
-           <small>{{$user->email}} 
+           <h2><a href="/users/{{$user->email}}">{{$user->title}}</a></h2>
+           <h3><strong style="color:red;">{{$user->name}}</strong> | {{$user->email}} | <strong style="color:red;">Id kornisnika =></strong>  {{$user->id}}
               {{Form::open(array('action' => ['UserController@destroy', $user->id])) }}
               @auth
               @if(Auth::user()->type == 'admin')
@@ -17,7 +17,7 @@
              @endauth
 {!!Form::close()!!}
           
-          </small>
+           </h3>
       </div>
   @endforeach
    </br>

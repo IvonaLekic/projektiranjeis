@@ -19,7 +19,8 @@ class ImageGalleryController extends Controller
      */
     public function index()
     {
-    	$images = ImageGallery::get();
+       // $images = ImageGallery::get();
+        $images = ImageGallery::orderBy('title','desc')->paginate(15);
     	return view('image-gallery',compact('images'));
     }
 
@@ -32,7 +33,7 @@ class ImageGalleryController extends Controller
     public function upload(Request $request)
     {
     	$this->validate($request, [
-    		'title' => 'required',
+    		//'title' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -41,10 +42,10 @@ class ImageGalleryController extends Controller
         $request->image->move(public_path('images'), $input['image']);
        
 
-
-        $input['title'] = $request->title;
+         
+        $input['title'] = $user_id = auth()->user()->id;
         ImageGallery::create($input);
-        $input['user_id'] = auth()->user()->id;
+       // $input['user_id'] = auth()->user()->id;
 
     	return back()
     		->with('success','Fotografija je uspješno učitana.');
@@ -52,7 +53,7 @@ class ImageGalleryController extends Controller
 
 
     /**
-     * Remove Image function
+     *
      *
      * @return \Illuminate\Http\Response
      */
@@ -62,4 +63,5 @@ class ImageGalleryController extends Controller
     	return back()
     		->with('success','Fotografija je uspješno obrisana.');	
     }
+    
 }

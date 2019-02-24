@@ -4,8 +4,9 @@
 </br>
 @auth
         @if(Auth::user()->type == 'admin' ||Auth::user()->type == 'normal_user')
-            <h1> Recenzije</h1> <h5> <a href="/posts/create"> Napiši novu recenziju </a> </h5>
+            <h1> Recenzije</h1></br> <h5> <a class="btn btn-success btn-lg" href="/posts/create"> Napiši novu recenziju </a> </h5>
         @endif
+</br>
 @endauth
     @if(count($posts) > 0)
        @foreach($posts as $post)

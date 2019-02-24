@@ -4,12 +4,19 @@
 <div class="jumbotron text-center">
         <h1  style=" border-style: solid;
         border-width: 0px 0px 2px 0px;">F O T O L A N D</h1>
+</br>
         <p>Brzo, lako i jednostavno. Dogovorite izradu fotografija ili mnoge druge nase usluge.</p>
         <h3>Ukoliko želite postaviti i izraditi svoje fotografije prijavite se!</h3>
 
 
         <p><a class="btn btn-primary btn-lg" href="/login" role="button"> Prijava </a>
            <a class="btn btn-success btn-lg" href="/register" role="button">Registracija</a></p>
+        </br>
+           @auth
+                @if(Auth::user()->type == 'admin')
+                 <a class="btn btn-success btn-lg" href="/users">Korisnici</a>
+                @endif
+                @endauth 
         </div>
 <div  class="jumbotron text-center">
         <h1  style=" border-style: solid;
@@ -17,7 +24,18 @@
         <br>
         <div > <img style="margin:auto; width:80%; height:380px; display:block" src=https://image.ibb.co/hyX5vU/slikaaa.jpg"></div>
 </div>
-
+<div  class="jumbotron text-center">
+                <h1  style=" border-style: solid;
+                border-width: 0px 0px 2px 0px;">Kolaž fotografija</h1>
+                <br>
+                <div > <img style="margin:auto; width:80%; height:380px; display:block" src="https://is4-ssl.mzstatic.com/image/thumb/Purple/v4/29/4a/f4/294af498-0d48-6417-93cc-4a3c476e6a57/mza_1180521636062022860.jpg/643x0w.jpg">
+                        @auth
+                        @if(Auth::user()->type == 'admin' ||Auth::user()->type == 'normal_user')
+                        <h3>Ukoliko želite naručiti kolaž fotografija kliknite <a href="/image-gallery" > OVDJE </a>.</h3>
+                        @endif
+                        @endauth
+                </div>
+        </div>
 <div  class="jumbotron text-center">
          <h1  style=" border-style: solid;
         border-width: 0px 0px 2px 0px;">Slikanje vjenčanja</h1>
@@ -46,18 +64,7 @@
       
 </div>
 
-<div  class="jumbotron text-center">
-                <h1  style=" border-style: solid;
-                border-width: 0px 0px 2px 0px;">Kolaž fotografija</h1>
-                <br>
-                <div > <img style="margin:auto; width:80%; height:380px; display:block" src="https://is4-ssl.mzstatic.com/image/thumb/Purple/v4/29/4a/f4/294af498-0d48-6417-93cc-4a3c476e6a57/mza_1180521636062022860.jpg/643x0w.jpg">
-                        @auth
-                        @if(Auth::user()->type == 'admin' ||Auth::user()->type == 'normal_user')
-                        <h3>Ukoliko želite naručiti kolaž fotografija kliknite <a href="/image-gallery" > OVDJE </a>.</h3>
-                        @endif
-                        @endauth
-                </div>
-        </div>
+
 
 <div class="jumbotron text-center">
                 <h1  style=" border-style: solid;
@@ -71,11 +78,7 @@
                         <br>Admin može vidjeti stranicu s korisnicima i obrisati bilo kojeg korisnika.Također admin može obrisati ili urediti bilo koju recenziju.
                  </p>
                  <br>
-                @auth
-                @if(Auth::user()->type == 'admin')
-                 <a class="btn btn-success btn-lg" href="/users">Korisnici</a>
-                @endif
-                @endauth 
+                
                  
                 </div>
 @endsection

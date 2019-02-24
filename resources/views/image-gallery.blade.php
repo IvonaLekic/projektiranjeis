@@ -75,10 +75,10 @@
 
 
         <div class="row">
-            <div class="col-md-5">
+          <!-- <div class="col-md-5">
                 <strong>Naziv fotografije:</strong>
                 <input type="text" name="title" class="form-control" placeholder="Naziv">
-            </div>
+            </div> -->
             <div class="col-md-5">
                 <strong>Fotografija:</strong>
                 <input type="file" name="image" class="form-control">
@@ -90,32 +90,31 @@
         </div>
 
     </form> </br>
-    <a href="/" class="btn btn-success btn-lg">Vrati se na početnu stranicu</a>
+    <a href="/" class="btn btn-success btn-lg">Vrati se na naslovnu</a>
 
 
     <div class="row">
     <div class='list-group gallery'>
 
-            @if(Auth::user()->type == 'admin' ||Auth::user()->type == 'normal_user')
-            <h1> Recenzije</h1> <h5> <a href="/posts/create"> Napiši novu recenziju </a> </h5>
-      
+           
+            
             @if($images->count())
                 @foreach($images as $image)
+                 @if(($image->title == $currentuserid = Auth::user()->id) || (Auth::user()->type == 'admin'))
                 <div class='col-sm-4 col-xs-6 col-md-3 col-lg-3'>
                     <a class="thumbnail fancybox" rel="ligthbox" href="/images/{{ $image->image }}">
                         <img class="img-responsive" alt="" src="/images/{{ $image->image }}" />
                         <div class='text-center'>
-                            <small class='text-muted'>{{ $image->title }}</small>
-                        </div> <!-- text-center / end -->
+                        <small class='text-muted'><strong style="color:red;">{{ $image->title }}</strong> {{$image->created_at}}</small>
+                        </div> 
                     </a>
                     <form action="{{ url('image-gallery',$image->id) }}" method="POST">
                     <input type="hidden" name="_method" value="delete">
                     {!! csrf_field() !!}
                     <button type="submit" class="close-icon btn btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
                     </form>
-                </div> <!-- col-6 / end -->
+                </div>   @endif
                 @endforeach
-            @endif
             @endif
 
 
@@ -123,7 +122,7 @@
     </div> <!-- row / end -->
 </div> <!-- container / end -->
 
-
+{{$images->links()}};
 </body>
 
 

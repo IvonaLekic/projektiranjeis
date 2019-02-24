@@ -10,7 +10,7 @@
         </div>
     </div>
 <div class="form-group">
-        {!! Form::label('body', 'Body', ['class' => 'col-lg-2 control-label']) !!}
+        {!! Form::label('body', 'Tekst recenzije', ['class' => 'col-lg-2 control-label']) !!}
         <div class="col-lg-10">
             {!! Form::textarea('body', $value = null, ['id' => 'article-ckeditor', 'class' => 'form-control', 'rows' => 5, 'placeholder' => 'Body text']) !!}
         </div>

@@ -11,6 +11,7 @@
 </div>
 <hr>
 <small>{{$user->email}}</small>
+
 </br>
 </br>
 <a href="/users" class="btn btn-dark">Korisnici</a>
